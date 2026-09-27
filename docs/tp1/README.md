@@ -7,21 +7,18 @@ Ce TP est un atelier guidé, à suivre étape par étape. Chaque page se termine
 | 1 | [Avant de commencer](01-avant-de-commencer.md) | Démarrage |
 | 2 | [Kotlin Multiplatform et le projet](02-kotlin-multiplatform.md) | Démarrage |
 | 3 | [Lancer l'application](03-lancer-l-application.md) | Démarrage |
-| 4 | Premiers pas avec Compose | 1 |
-| 5 | Modifier l'UI | 1 |
-| 6 | Réutiliser des composables | 1 |
-| 7 | Créer des lignes et des colonnes | 1 |
-| 8 | ⭐ L'état dans Compose | 2 |
-| 9 | ⭐ Hisser un état | 2 |
-| 10 | Créer une liste performante | 3 |
-| 11 | Enregistrer l'état | 3 |
-| 12 | Animer ta liste | 🚀 Bonus |
-| 13 | Appliquer un style et un thème | 🚀 Bonus |
-| 14 | Touches finales | 🚀 Bonus |
-| 15 | Ta première carte crypto | 🚀 Bonus |
-| 16 | Félicitations et récapitulatif | – |
-
-<!-- TODO : ajouter les liens des étapes 4 à 16 au fur et à mesure (noms déjà utilisés : 04-premiers-pas.md, 08-etat-dans-compose.md, 13-style-et-theme.md) -->
+| 4 | [Premiers pas avec Compose](04-premiers-pas.md) | 1 |
+| 5 | [Modifier l'UI](05-modifier-l-ui.md) | 1 |
+| 6 | [Réutiliser des composables](06-reutiliser-des-composables.md) | 1 |
+| 7 | [Créer des lignes et des colonnes](07-lignes-et-colonnes.md) | 1 |
+| 8 | [⭐ L'état dans Compose](08-etat-dans-compose.md) | 2 |
+| 9 | [⭐ Hisser un état](09-hisser-un-etat.md) | 2 |
+| 10 | [Créer une liste performante](10-liste-performante.md) | 3 |
+| 11 | [Enregistrer l'état](11-enregistrer-l-etat.md) | 3 |
+| 12 | [Animer ta liste](12-animer-ta-liste.md) | 🚀 Bonus |
+| 13 | [Appliquer un style et un thème](13-style-et-theme.md) | 🚀 Bonus |
+| 14 | [Touches finales](14-touches-finales.md) | 🚀 Bonus |
+| 15 | [Félicitations et récapitulatif](15-felicitations.md) | – |
 
 On avance **par blocs**, avec un point en commun entre chaque bloc. Si tu as fini un bloc avant les autres, continue directement sur le suivant.
 
