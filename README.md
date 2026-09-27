@@ -10,8 +10,6 @@ Au fil des séances, on construit ensemble **FollowMyCrypto** : une application 
 
 ## 👋 Le cours
 
-<!-- TODO : 2-3 lignes sur toi (poste, entreprise, expérience mobile) -->
-
 **Format :** 4 séances (3 × 4h + 1 × 3h).
 
 **Aucun prérequis en développement mobile.** Des bases de programmation suffisent.
@@ -33,11 +31,15 @@ Au fil des séances, on construit ensemble **FollowMyCrypto** : une application 
 
 1. Installe [Android Studio](https://developer.android.com/studio) (version 2026.1 ou plus récente).
 2. Installe le [plugin Kotlin Multiplatform](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform) : dans Android Studio, ouvre `Settings > Plugins`, onglet **Marketplace**, cherche **Kotlin Multiplatform** puis **Install**.
-3. Clone ce dépôt et ouvre-le dans Android Studio (`File > Open`) :
+3. Récupère le projet, au choix (détails dans le [TP 1, étape 2](docs/tp1/02-kotlin-multiplatform.md#récupérer-le-projet)) :
+   - **Option A (recommandée)** : crée-le toi-même avec le wizard **Kotlin Multiplatform** d'Android Studio (`File > New > New Project`) ;
+   - **Option B** : clone ce dépôt, place-toi sur le tag `tp1-start`, puis ouvre le dossier dans Android Studio (`File > Open`) :
 
-   ```bash
-   git clone https://github.com/bvic-dev/kmp-from-zero.git
-   ```
+     ```bash
+     git clone https://github.com/bvic-dev/kmp-from-zero.git
+     cd kmp-from-zero
+     git checkout tp1-start
+     ```
 
 4. Attends la fin de la première synchronisation Gradle.
 5. Crée un émulateur Android (voir [TP 1, étape 3](docs/tp1/03-lancer-l-application.md)).
@@ -61,6 +63,10 @@ Pas à l'aise avec Git ? Télécharge directement le zip de l'étape.
 | Tag | Contenu | Code | Zip |
 |---|---|---|---|
 | `tp1-start` | Projet généré par le wizard KMP | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-start) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-start.zip) |
+| `tp1-bloc1` | TP 1, fin du bloc 1 (étape 7) : lignes, colonnes et bouton | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-bloc1) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-bloc1.zip) |
+| `tp1-bloc2` | TP 1, fin du bloc 2 (étape 9) : état et écran d'accueil | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-bloc2) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-bloc2.zip) |
+| `tp1-bloc3` | TP 1, fin du bloc 3 (étape 11) : liste et état sauvegardé | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-bloc3) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-bloc3.zip) |
+| `tp1-end` | TP 1 terminé, bonus compris | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-end) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-end.zip) |
 
 *D'autres tags seront ajoutés au fil des séances.*
 
