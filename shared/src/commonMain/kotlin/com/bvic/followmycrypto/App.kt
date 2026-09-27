@@ -14,15 +14,19 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun App() {
     MaterialTheme {
-        // Scaffold fournit la structure de base d'un écran Material Design
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            // innerPadding contient les marges à appliquer pour que le contenu
-            // ne soit pas caché par la barre d'état, l'encoche ou la barre de navigation
-            Greeting(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding),
-            )
+        Scaffold { innerPadding ->
+            MyApp(modifier = Modifier.padding(innerPadding).fillMaxSize())
         }
+    }
+}
+
+@Composable
+fun MyApp(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.background,
+    ) {
+        Greeting("Android")
     }
 }
 
@@ -36,10 +40,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true, name = "Text preview")
+@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     MaterialTheme {
-        Greeting(name = "Android")
+        MyApp()
     }
 }
