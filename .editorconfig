@@ -1,0 +1,13 @@
+root = true
+
+[*.{kt,kts}]
+ktlint_function_naming_ignore_when_annotated_with = Composable
+ktlint_standard_function-naming = disabled
+ktlint_standard_filename = disabled
+ktlint_standard_no-wildcard-imports = true
+ij_kotlin_name_count_to_use_star_import = 1024
+ij_kotlin_name_count_to_use_star_import_for_members = 1024
+
+[*.java]
+ij_java_class_count_to_use_import_on_demand = 1024
+ij_java_names_count_to_use_import_on_demand = 1024
