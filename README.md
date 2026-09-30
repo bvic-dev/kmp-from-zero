@@ -4,7 +4,14 @@ Cours de développement mobile multiplateforme avec **Kotlin Multiplatform (KMP)
 
 Au fil des séances, on construit ensemble **FollowMyCrypto** : une application **Android, iOS et Desktop** qui affiche le cours des cryptomonnaies, avec un **seul code Kotlin partagé**, interface comprise.
 
-<!-- 📸 TODO : capture de l'app finale FollowMyCrypto (Android + iOS + Desktop côte à côte) -->
+<p align="center">
+  <img src="docs/img/app-android-light.png" alt="Liste des cryptos sur Android" width="30%">
+  &nbsp;
+  <img src="docs/img/app-android-dark-detail.png" alt="Détail d'une crypto en mode sombre sur Android" width="30%">
+  &nbsp;
+  <img src="docs/img/app-ios.png" alt="Liste des cryptos sur iOS" width="30%">
+</p>
+<p align="center"><em>Android (mode clair) · Android (mode sombre, écran détail) · iOS</em></p>
 
 ---
 
