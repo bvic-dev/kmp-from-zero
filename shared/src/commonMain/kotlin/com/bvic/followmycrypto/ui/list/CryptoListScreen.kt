@@ -1,7 +1,6 @@
 package com.bvic.followmycrypto.ui.list
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,9 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -34,11 +31,14 @@ import com.bvic.followmycrypto.model.Crypto
 import com.bvic.followmycrypto.theme.FollowMyCryptoTheme
 import com.bvic.followmycrypto.theme.PriceDown
 import com.bvic.followmycrypto.theme.PriceUp
+import com.bvic.followmycrypto.ui.components.ErrorContent
+import com.bvic.followmycrypto.ui.components.LoadingContent
 import com.bvic.followmycrypto.ui.format.formatPercent
 import com.bvic.followmycrypto.ui.format.formatPrice
 
 @Composable
 fun CryptoListScreen(
+    onCryptoClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: CryptoListViewModel = viewModel { CryptoListViewModel(AppContainer.cryptoRepository) },
 ) {
@@ -47,6 +47,7 @@ fun CryptoListScreen(
     CryptoListContent(
         uiState = uiState,
         onRefresh = viewModel::refresh,
+        onCryptoClick = onCryptoClick,
         modifier = modifier,
     )
 }
@@ -56,6 +57,7 @@ fun CryptoListScreen(
 fun CryptoListContent(
     uiState: CryptoListUiState,
     onRefresh: () -> Unit,
+    onCryptoClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -79,47 +81,35 @@ fun CryptoListContent(
                 onRetry = onRefresh,
                 modifier = contentModifier,
             )
-            is CryptoListUiState.Success -> CryptoList(cryptos = uiState.cryptos, modifier = contentModifier)
+            is CryptoListUiState.Success -> CryptoList(
+                cryptos = uiState.cryptos,
+                onCryptoClick = onCryptoClick,
+                modifier = contentModifier,
+            )
         }
     }
 }
 
 @Composable
-fun LoadingContent(modifier: Modifier = Modifier) {
-    Box(modifier = modifier, contentAlignment = Alignment.Center) {
-        CircularProgressIndicator()
-    }
-}
-
-@Composable
-fun ErrorContent(message: String, onRetry: () -> Unit, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(text = message)
-        Button(onClick = onRetry, modifier = Modifier.padding(top = 16.dp)) {
-            Text("Réessayer")
-        }
-    }
-}
-
-@Composable
-fun CryptoList(cryptos: List<Crypto>, modifier: Modifier = Modifier) {
+fun CryptoList(
+    cryptos: List<Crypto>,
+    onCryptoClick: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     LazyColumn(modifier = modifier.fillMaxSize()) {
         items(items = cryptos, key = { it.symbol }) { crypto ->
-            CryptoRow(crypto = crypto)
+            CryptoRow(crypto = crypto, onClick = { onCryptoClick(crypto.symbol) })
             HorizontalDivider()
         }
     }
 }
 
 @Composable
-fun CryptoRow(crypto: Crypto, modifier: Modifier = Modifier) {
+fun CryptoRow(crypto: Crypto, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -158,7 +148,7 @@ private val previewCryptos = listOf(
 @Composable
 fun CryptoRowPreview() {
     FollowMyCryptoTheme {
-        CryptoRow(crypto = previewCryptos.first())
+        CryptoRow(crypto = previewCryptos.first(), onClick = {})
     }
 }
 
@@ -166,7 +156,7 @@ fun CryptoRowPreview() {
 @Composable
 fun CryptoListContentPreview() {
     FollowMyCryptoTheme {
-        CryptoListContent(uiState = CryptoListUiState.Success(previewCryptos), onRefresh = {})
+        CryptoListContent(uiState = CryptoListUiState.Success(previewCryptos), onRefresh = {}, onCryptoClick = {})
     }
 }
 
@@ -174,6 +164,6 @@ fun CryptoListContentPreview() {
 @Composable
 fun CryptoListErrorPreview() {
     FollowMyCryptoTheme {
-        CryptoListContent(uiState = CryptoListUiState.Error("Impossible de charger les cours."), onRefresh = {})
+        CryptoListContent(uiState = CryptoListUiState.Error("Impossible de charger les cours."), onRefresh = {}, onCryptoClick = {})
     }
 }

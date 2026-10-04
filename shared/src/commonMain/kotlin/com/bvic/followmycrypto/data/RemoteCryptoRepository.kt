@@ -25,6 +25,9 @@ class RemoteCryptoRepository(private val api: BinanceApi) : CryptoRepository {
         // Binance ne garantit pas l'ordre de la réponse : on garde celui de notre liste
         return cryptoNames.keys.mapNotNull { symbol -> tickers[symbol + QUOTE]?.toCrypto() }
     }
+
+    override suspend fun getCrypto(symbol: String): Crypto =
+        api.getTickers(listOf(symbol + QUOTE)).first().toCrypto()
 }
 
 // DTO (ce que l'API envoie) → modèle (ce dont l'application a besoin)

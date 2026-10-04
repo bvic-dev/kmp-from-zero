@@ -21,4 +21,9 @@ class FakeCryptoRepository : CryptoRepository {
         delay(1_500)
         return mockCryptos
     }
+
+    override suspend fun getCrypto(symbol: String): Crypto {
+        delay(500)
+        return mockCryptos.first { it.symbol == symbol }
+    }
 }
