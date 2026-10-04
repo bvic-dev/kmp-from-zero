@@ -174,7 +174,7 @@ fun OnboardingPreview() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MyAppPreview() {
     FollowMyCryptoTheme {
