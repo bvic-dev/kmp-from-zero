@@ -28,9 +28,9 @@ Au fil des séances, on construit ensemble **FollowMyCrypto** : une application 
 | Séance | Sujet | Support |
 |---|---|---|
 | 1 | Découverte de KMP/CMP, les bases de Compose | [TP 1](docs/tp1/README.md) |
-| 2 | FollowMyCrypto : liste, état et navigation | *à venir* |
-| 3 | Appels réseau et gestion des états | *à venir* |
-| 4 | Pour aller plus loin, et évaluation | *à venir* |
+| 2 | FollowMyCrypto : la liste des cryptos, de l'écran à l'API | [TP 2](docs/tp2/README.md) |
+| 3 | Navigation et écran de détail, puis projet en autonomie | *à venir* |
+| 4 | Projet en autonomie, et évaluation | *à venir* |
 
 ---
 
@@ -74,6 +74,8 @@ Pas à l'aise avec Git ? Télécharge directement le zip de l'étape.
 | `tp1-bloc2` | TP 1, fin du bloc 2 (étape 9) : état et écran d'accueil | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-bloc2) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-bloc2.zip) |
 | `tp1-bloc3` | TP 1, fin du bloc 3 (étape 11) : liste et état sauvegardé | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-bloc3) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-bloc3.zip) |
 | `tp1-end` | TP 1 terminé, bonus compris | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp1-end) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp1-end.zip) |
+| `tp2-start` | Point de départ du TP 2 : thème et fonctions de formatage | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp2-start) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp2-start.zip) |
+| `tp2-bloc1` | TP 2, fin du bloc 1 (étape 4) : la liste sur de fausses données | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp2-bloc1) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp2-bloc1.zip) |
 
 *D'autres tags seront ajoutés au fil des séances.*
 
