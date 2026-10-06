@@ -281,4 +281,4 @@ C'est un découpage que tu retrouveras dans presque toutes les applications Comp
 
 ---
 
-[⬅️ Étape précédente](04-liste.md) · [📚 Sommaire](README.md) · Étape suivante : *à venir*
+[⬅️ Étape précédente](04-liste.md) · [📚 Sommaire](README.md) · [Étape suivante : Le repository et les états de l'écran ➡️](06-repository-et-etats.md)
