@@ -9,12 +9,12 @@ Dans ce TP, on construit le premier écran de FollowMyCrypto : la liste des cryp
 | 3 | [Une ligne de crypto](03-crypto-row.md) | 1 | 30 min |
 | 4 | [La liste](04-liste.md) | 1 | 15 min |
 | 5 | [⭐ Le ViewModel](05-viewmodel.md) | 2 | 40 min |
-| 6 | ⭐ Le repository et les états de l'écran *(à venir)* | 2 | 45 min |
-| 7 | Explorer l'API Binance *(à venir)* | 3 | 20 min |
-| 8 | Ajouter les bibliothèques *(à venir)* | 3 | 25 min |
-| 9 | L'appel réseau *(à venir)* | 3 | 40 min |
-| 10 | Navigation et écran de détail *(à venir)* | 🚀 Bonus | – |
-| 11 | Récapitulatif *(à venir)* | – | – |
+| 6 | [⭐ Le repository et les états de l'écran](06-repository-et-etats.md) | 2 | 45 min |
+| 7 | [Explorer l'API Binance](07-explorer-l-api.md) | 3 | 20 min |
+| 8 | [Ajouter les bibliothèques](08-bibliotheques.md) | 3 | 25 min |
+| 9 | [L'appel réseau](09-appel-reseau.md) | 3 | 40 min |
+| 10 | [Navigation et écran de détail](10-navigation-et-detail.md) | 🚀 Bonus | – |
+| 11 | [Récapitulatif](11-recapitulatif.md) | – | – |
 
 On avance **par blocs**, avec un point en commun entre chaque bloc. Si tu as fini un bloc avant les autres, continue directement sur le suivant.
 
