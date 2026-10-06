@@ -77,6 +77,8 @@ Pas à l'aise avec Git ? Télécharge directement le zip de l'étape.
 | `tp2-start` | Point de départ du TP 2 : thème et fonctions de formatage | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp2-start) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp2-start.zip) |
 | `tp2-bloc1` | TP 2, fin du bloc 1 (étape 4) : la liste sur de fausses données | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp2-bloc1) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp2-bloc1.zip) |
 | `tp2-bloc2` | TP 2, fin du bloc 2 (étape 6) : ViewModel, repository et états de l'écran | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp2-bloc2) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp2-bloc2.zip) |
+| `tp2-bloc3` | TP 2, fin du bloc 3 (étape 9) : appel à l'API Binance | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp2-bloc3) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp2-bloc3.zip) |
+| `tp2-end` | TP 2 terminé, bonus compris : navigation et écran de détail | [voir](https://github.com/bvic-dev/kmp-from-zero/tree/tp2-end) | [⬇️](https://github.com/bvic-dev/kmp-from-zero/archive/refs/tags/tp2-end.zip) |
 
 *D'autres tags seront ajoutés au fil des séances.*
 
