@@ -357,4 +357,4 @@ git checkout tp2-bloc2
 
 ---
 
-[⬅️ Étape précédente](05-viewmodel.md) · [📚 Sommaire](README.md) · Étape suivante : *à venir*
+[⬅️ Étape précédente](05-viewmodel.md) · [📚 Sommaire](README.md) · [Étape suivante : Explorer l'API Binance ➡️](07-explorer-l-api.md)
