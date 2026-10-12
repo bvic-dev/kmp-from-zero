@@ -243,8 +243,6 @@ class CryptoListViewModel(
         viewModelScope.launch {
             try {
                 _uiState.value = CryptoListUiState.Success(repository.getCryptos())
-            } catch (e: CancellationException) {
-                throw e
             } catch (e: Exception) {
                 _uiState.value = CryptoListUiState.Error("Impossible de charger les cours.")
             }
@@ -326,13 +324,30 @@ Le code complet est sur le tag `tp2-bloc2`.
 
 S'il écrivait `FakeCryptoRepository()` lui-même, il serait lié à cette implémentation : il faudrait le modifier pour passer à la vraie. En le **recevant** de l'extérieur, il ne dépend que du contrat. C'est ce qu'on appelle l'**injection de dépendances**. Ici, c'est `AppContainer` qui choisit l'implémentation, à un seul endroit. Dans les gros projets, des bibliothèques comme Koin ou Hilt automatisent ce travail.
 
-**Pourquoi un `catch` spécial pour `CancellationException` ?**
-
-Quand une coroutine est annulée (l'utilisateur a quitté l'écran), Kotlin l'arrête en levant cette exception. Ce n'est pas une erreur : il faut la laisser passer, sinon la coroutine ne s'arrête pas proprement. C'est un réflexe à avoir dès qu'on écrit `catch (e: Exception)` dans une coroutine.
-
 **Pourquoi `when (uiState)` plutôt que trois variables `isLoading`, `error`, `cryptos` ?**
 
 Avec trois variables, rien n'empêche `isLoading = true` **et** une erreur en même temps : que doit afficher l'écran ? Avec une `sealed interface`, ces états impossibles ne peuvent pas exister.
+
+<details>
+<summary>🔬 Pour aller plus loin : et si la coroutine est annulée pendant le chargement ?</summary>
+
+Quand l'utilisateur quitte l'écran pendant un chargement, `viewModelScope` annule la coroutine. Kotlin le fait en levant une exception particulière, `CancellationException`, à l'endroit où la coroutine était en pause.
+
+Notre `catch (e: Exception)` l'attrape comme les autres : on écrit donc un état `Error` dans un écran qui n'existe plus. Ici, c'est sans conséquence, puisque plus personne ne lit cet état et que la coroutine se termine juste après.
+
+Dans un code plus long (une boucle de rafraîchissement automatique, par exemple), il faudrait laisser passer l'annulation pour que la coroutine s'arrête vraiment :
+
+```kotlin
+} catch (e: CancellationException) {
+    throw e // ce n'est pas une erreur : on la laisse remonter
+} catch (e: Exception) {
+    _uiState.value = CryptoListUiState.Error("Impossible de charger les cours.")
+}
+```
+
+Retiens seulement l'idée : dans une coroutine, **une annulation n'est pas une erreur**.
+
+</details>
 
 ---
 
