@@ -1,6 +1,8 @@
 # TP 3 — FollowMyCrypto : à toi de jouer
 
-Les deux dernières séances sont un **projet en binôme** : vous partez de l'application du TP 2 et vous la faites évoluer. C'est ce travail qui est noté.
+Les deux dernières séances sont un **projet** : vous partez de l'application du TP 2 et vous la faites évoluer. C'est ce travail qui est noté.
+
+Vous le faites **seul ou à deux**, au choix.
 
 | # | Page |
 |---|---|
@@ -11,7 +13,7 @@ Les deux dernières séances sont un **projet en binôme** : vous partez de l'ap
 
 **Séance 3.** Je présente la fin du TP 2, des étapes 7 à 10 : [l'API Binance](../tp2/07-explorer-l-api.md), [les bibliothèques](../tp2/08-bibliotheques.md), [l'appel réseau](../tp2/09-appel-reseau.md), puis [la navigation et l'écran de détail](../tp2/10-navigation-et-detail.md). Ensuite, les projets commencent.
 
-**Séance 4.** Vous continuez le projet, puis chaque binôme présente son travail.
+**Séance 4.** Vous continuez le projet, puis chacun, ou chaque binôme, présente son travail.
 
 ## 🏁 Le point de départ
 
@@ -21,24 +23,23 @@ Vous avez le choix entre deux façons de travailler. La première est celle qu'o
 
 ### Option A : avec Git et GitHub
 
-1. **Un seul** des deux crée une copie du dépôt sur son compte GitHub : le bouton **Fork**, en haut à droite de [la page du dépôt](https://github.com/bvic-dev/kmp-from-zero).
-2. Il y invite son binôme : dans le fork, `Settings > Collaborators > Add people`.
-3. Chacun récupère le fork sur sa machine et se place sur la branche du projet, nommée avec vos deux noms :
+1. Créez une copie du dépôt sur votre compte GitHub : le bouton **Fork**, en haut à droite de [la page du dépôt](https://github.com/bvic-dev/kmp-from-zero). En binôme, **un seul** des deux le fait.
+2. Récupérez le fork sur votre machine et créez la branche du projet, nommée avec votre nom, ou vos deux noms :
 
    ```bash
    git clone https://github.com/<votre-compte>/kmp-from-zero.git
    cd kmp-from-zero
-   git switch -c projet-dupont-martin      # le premier la crée et la pousse
-   git push -u origin projet-dupont-martin
+   git switch -c projet-dupont             # ou projet-dupont-martin
+   git push -u origin projet-dupont
    ```
 
-   Le second la récupère avec `git switch projet-dupont-martin` après son `git clone`.
+**En binôme**, celui qui a créé le fork y invite l'autre : `Settings > Collaborators > Add people`. Le second clone alors le même fork et récupère la branche avec `git switch projet-dupont-martin`.
 
-Vous pouvez alors travailler **en parallèle**, chacun sur son poste. Pensez à `git pull` avant de commencer une évolution, et à `git push` dès qu'elle fonctionne.
+Vous pouvez ainsi travailler **en parallèle**, chacun sur son poste. Pensez à `git pull` avant de commencer une évolution, et à `git push` dès qu'elle fonctionne.
 
 ### Option B : sans Git
 
-Téléchargez [le zip de la branche `main`](https://github.com/bvic-dev/kmp-from-zero/archive/refs/heads/main.zip), décompressez-le et ouvrez le dossier dans Android Studio. Vous travaillez à deux sur le même poste.
+Téléchargez [le zip de la branche `main`](https://github.com/bvic-dev/kmp-from-zero/archive/refs/heads/main.zip), décompressez-le et ouvrez le dossier dans Android Studio. En binôme, vous travaillez à deux sur le même poste.
 
 ### Dans les deux cas
 
@@ -69,11 +70,12 @@ shared/src/commonMain/kotlin/com/bvic/followmycrypto/
 
 Pour chaque évolution, posez-vous la même question avant de commencer : **quelles couches faut-il modifier ?**
 
-## 🤝 Travailler à deux
+## 🤝 Si vous travaillez à deux
 
 - **Découpez** : une évolution qui touche la liste et une qui touche le détail peuvent avancer en parallèle. Deux évolutions qui modifient le même fichier, beaucoup moins.
-- **Commitez souvent**, une évolution à la fois. Un commit qui marche vaut mieux qu'une évolution à moitié finie le jour de la présentation.
 - **Chacun doit pouvoir expliquer tout le code**, y compris celui écrit par l'autre : c'est vérifié à la présentation.
+
+Seul ou à deux, **commitez souvent**, une évolution à la fois. Un commit qui marche vaut mieux qu'une évolution à moitié finie le jour de la présentation.
 
 ---
 
