@@ -166,7 +166,7 @@ Pour charger une image depuis Internet, utilisez la bibliothèque **Coil**. Vers
 - Le squelette a la même forme que la vraie liste : même hauteur de ligne, des blocs à la place des textes.
 - L'animation tourne en boucle tant que dure le chargement.
 - Aucune bibliothèque supplémentaire.
-- **Pour la présentation**, prévoyez de quoi montrer le squelette : le réseau répond trop vite pour qu'on ait le temps de le voir. Par exemple un `delay(5_000)` écrit en dur dans le repository, juste avant l'appel à l'API.
+- **Pour la démonstration**, prévoyez de quoi montrer le squelette : le réseau répond trop vite pour qu'on ait le temps de le voir. Par exemple un `delay(5_000)` écrit en dur dans le repository, juste avant l'appel à l'API.
 
 💡 Pistes : `rememberInfiniteTransition`, dans [les animations basées sur une valeur](https://developer.android.com/develop/ui/compose/animation/value-based) ; un dégradé qui se déplace, avec [`Brush`](https://developer.android.com/develop/ui/compose/graphics/draw/brush). Commencez par un squelette immobile, puis animez-le. `FakeCryptoRepository` et son `delay` sont parfaits pour l'observer longtemps.
 
@@ -301,7 +301,7 @@ Avec l'import `kotlinx.io.IOException`. Vous pouvez aussi couper le Wi-Fi, ou de
 
 - Le ViewModel ne connaît pas Ktor : c'est le repository qui traduit les exceptions techniques en erreurs que l'application comprend.
 - L'interface choisit le message à partir du **type** d'erreur, pas d'un texte venu du repository.
-- **Pour la présentation**, gardez les lignes de simulation en commentaire dans le code : vous montrerez chaque message en en décommentant une.
+- **Pour la démonstration**, gardez les lignes de simulation en commentaire dans le code : vous montrerez chaque message en en décommentant une.
 
 💡 Pistes : une `sealed interface` peut décrire vos erreurs, comme elle décrit déjà l'état de l'écran. Dans le repository, un `try` / `catch` par type d'exception ; attention à l'ordre des `catch`.
 
@@ -477,7 +477,7 @@ La fonction qui lance un test est `runComposeUiTest`. Prenez celle du package `a
 
 ## 20. Votre idée
 
-Une alerte quand un prix dépasse un seuil, un portefeuille fictif, un classement des plus fortes hausses… Si vous avez une idée qui n'est pas dans la liste, faites-la : sa difficulté sera estimée à la présentation.
+Une alerte quand un prix dépasse un seuil, un portefeuille fictif, un classement des plus fortes hausses… Si vous avez une idée qui n'est pas dans la liste, faites-la : sa difficulté sera estimée pendant la démonstration.
 
 ---
 

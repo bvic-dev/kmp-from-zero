@@ -7,13 +7,13 @@ Vous le faites **seul ou à deux**, au choix.
 | # | Page |
 |---|---|
 | 1 | [Les évolutions](01-evolutions.md) : ce que vous pouvez ajouter à l'application |
-| 2 | [L'évaluation](02-evaluation.md) : la grille de notation et la présentation |
+| 2 | [L'évaluation](02-evaluation.md) : la grille de notation et la démonstration |
 
 ## 🗓️ Le déroulé
 
 **Séance 3.** Je présente la fin du TP 2, des étapes 7 à 10 : [l'API Binance](../tp2/07-explorer-l-api.md), [les bibliothèques](../tp2/08-bibliotheques.md), [l'appel réseau](../tp2/09-appel-reseau.md), puis [la navigation et l'écran de détail](../tp2/10-navigation-et-detail.md). Ensuite, les projets commencent.
 
-**Séance 4.** Vous continuez le projet, puis chacun, ou chaque binôme, présente son travail.
+**Séance 4.** Vous continuez le projet, puis vous venez me le montrer : je vous vois un par un, ou binôme par binôme, pendant que les autres continuent à travailler.
 
 ## 🏁 Le point de départ
 
@@ -73,9 +73,9 @@ Pour chaque évolution, posez-vous la même question avant de commencer : **quel
 ## 🤝 Si vous travaillez à deux
 
 - **Découpez** : une évolution qui touche la liste et une qui touche le détail peuvent avancer en parallèle. Deux évolutions qui modifient le même fichier, beaucoup moins.
-- **Chacun doit pouvoir expliquer tout le code**, y compris celui écrit par l'autre : c'est vérifié à la présentation.
+- **Chacun doit pouvoir expliquer tout le code**, y compris celui écrit par l'autre : c'est vérifié pendant la démonstration.
 
-Seul ou à deux, **commitez souvent**, une évolution à la fois. Un commit qui marche vaut mieux qu'une évolution à moitié finie le jour de la présentation.
+Seul ou à deux, **commitez souvent**, une évolution à la fois. Un commit qui marche vaut mieux qu'une évolution à moitié finie le jour de la démonstration.
 
 ---
 
