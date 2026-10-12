@@ -7,11 +7,13 @@ import io.ktor.client.request.parameter
 
 class BinanceApi(private val client: HttpClient) {
 
-    // pairs = ["BTCUSDT", "ETHUSDT"] devient le paramètre symbols=["BTCUSDT","ETHUSDT"]
-    suspend fun getTickers(pairs: List<String>): List<TickerDto> =
-        client.get("$BASE_URL/api/v3/ticker/24hr") {
-            parameter("symbols", pairs.joinToString(separator = ",", prefix = "[", postfix = "]") { "\"$it\"" })
+    suspend fun getTickers(pairs: List<String>): List<TickerDto> {
+        // ["BTCUSDT", "ETHUSDT"] devient le texte ["BTCUSDT","ETHUSDT"]
+        val symbols = pairs.joinToString(separator = ",", prefix = "[", postfix = "]") { "\"$it\"" }
+        return client.get("$BASE_URL/api/v3/ticker/24hr") {
+            parameter("symbols", symbols)
         }.body()
+    }
 
     private companion object {
         // Domaine de Binance dédié aux données publiques de marché, sans clé d'API

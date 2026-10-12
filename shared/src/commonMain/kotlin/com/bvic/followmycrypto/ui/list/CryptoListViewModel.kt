@@ -3,7 +3,6 @@ package com.bvic.followmycrypto.ui.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bvic.followmycrypto.data.CryptoRepository
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,8 +29,6 @@ class CryptoListViewModel(
         viewModelScope.launch {
             try {
                 _uiState.value = CryptoListUiState.Success(repository.getCryptos())
-            } catch (e: CancellationException) {
-                throw e
             } catch (e: Exception) {
                 _uiState.value = CryptoListUiState.Error("Impossible de charger les cours.")
             }

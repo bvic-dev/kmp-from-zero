@@ -4,34 +4,34 @@ import com.bvic.followmycrypto.data.remote.BinanceApi
 import com.bvic.followmycrypto.data.remote.TickerDto
 import com.bvic.followmycrypto.model.Crypto
 
-// Binance ne fournit pas le nom des cryptos : on garde notre propre liste
+// Les cryptos suivies : la paire à demander à Binance, et le nom à afficher (Binance ne le fournit pas)
 private val cryptoNames = mapOf(
-    "BTC" to "Bitcoin",
-    "ETH" to "Ethereum",
-    "BNB" to "BNB",
-    "SOL" to "Solana",
-    "XRP" to "XRP",
-    "ADA" to "Cardano",
-    "DOGE" to "Dogecoin",
-    "SHIB" to "Shiba Inu",
+    "BTCUSDT" to "Bitcoin",
+    "ETHUSDT" to "Ethereum",
+    "BNBUSDT" to "BNB",
+    "SOLUSDT" to "Solana",
+    "XRPUSDT" to "XRP",
+    "ADAUSDT" to "Cardano",
+    "DOGEUSDT" to "Dogecoin",
+    "SHIBUSDT" to "Shiba Inu",
 )
-
-private const val QUOTE = "USDT"
 
 class RemoteCryptoRepository(private val api: BinanceApi) : CryptoRepository {
 
     override suspend fun getCryptos(): List<Crypto> {
-        val tickers = api.getTickers(cryptoNames.keys.map { it + QUOTE }).associateBy { it.symbol }
-        // Binance ne garantit pas l'ordre de la réponse : on garde celui de notre liste
-        return cryptoNames.keys.mapNotNull { symbol -> tickers[symbol + QUOTE]?.toCrypto() }
+        // 1. Les paires à demander
+        val pairs = cryptoNames.keys.toList()
+        // 2. L'appel à l'API
+        val tickers = api.getTickers(pairs)
+        // 3. La conversion de chaque DTO en modèle
+        return tickers.map { ticker -> ticker.toCrypto() }
     }
 }
 
 // DTO (ce que l'API envoie) → modèle (ce dont l'application a besoin)
 private fun TickerDto.toCrypto(): Crypto {
-    val symbol = symbol.removeSuffix(QUOTE)
     return Crypto(
-        symbol = symbol,
+        symbol = symbol.removeSuffix("USDT"),
         name = cryptoNames[symbol] ?: symbol,
         price = lastPrice.toDouble(),
         changePercent = priceChangePercent.toDouble(),
