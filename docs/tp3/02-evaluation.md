@@ -11,7 +11,7 @@ La grille est la même pour tous. Seul le **nombre** d'évolutions attendu tient
 | Au moins une évolution 🧱 fonctionne | 4 |
 | Les évolutions au choix | 8 |
 | Le respect de l'architecture | 4 |
-| La présentation | 4 |
+| La démonstration | 4 |
 
 ### Au moins une évolution 🧱 (4 points)
 
@@ -37,18 +37,20 @@ C'est ce que vous avez appris au TP 2, appliqué à votre code :
 - Les erreurs sont **gérées** : l'application ne plante pas sans réseau.
 - L'application **se lance sur Android et sur Desktop**.
 
-### La présentation (4 points)
+### La démonstration (4 points)
 
 Voir ci-dessous.
 
-## 🎤 La présentation
+## 🎤 La démonstration
 
-Elle a lieu pendant la deuxième moitié de la dernière séance. La durée de chaque passage sera annoncée en séance : elle dépend du nombre de projets.
+Ce n'est **pas une présentation devant la classe**. Pendant la deuxième moitié de la dernière séance, vous venez me voir à mon bureau, un par un ou binôme par binôme, avec votre ordinateur. Les autres continuent à travailler pendant ce temps.
+
+La durée de chaque passage sera annoncée en séance : elle dépend du nombre de projets.
 
 Ce qui est attendu :
 
-- Vous montrez l'application, puis le code d'une évolution de votre choix.
-- Vous pouvez être interrogé sur **n'importe quelle partie** du code.
+- Vous me montrez l'application, puis le code d'une évolution de votre choix.
+- Je peux vous interroger sur **n'importe quelle partie** du code.
 - En binôme, les **deux** parlent, et chacun doit pouvoir expliquer le code écrit par l'autre.
 - Vous dites ce qui **ne marche pas** ou ce que vous n'avez pas eu le temps de finir : c'est mieux vu qu'une démonstration qui évite le problème.
 
