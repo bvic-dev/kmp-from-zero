@@ -1,6 +1,8 @@
 # 2. L'évaluation
 
-Le projet est noté **par binôme**, sur 20.
+Le projet est noté sur 20. Si vous travaillez à deux, la note est celle du binôme.
+
+La grille est la même pour tous. Seul le **nombre** d'évolutions attendu tient compte du fait que vous êtes un ou deux.
 
 ## 📊 La grille
 
@@ -41,12 +43,13 @@ Voir ci-dessous.
 
 ## 🎤 La présentation
 
-**8 minutes par binôme**, à la deuxième moitié de la dernière séance.
+Elle a lieu pendant la deuxième moitié de la dernière séance. La durée de chaque passage sera annoncée en séance : elle dépend du nombre de projets.
 
 Ce qui est attendu :
 
-- Les **deux** membres du binôme parlent.
-- Chacun peut être interrogé sur **n'importe quelle partie** du code, y compris celle écrite par l'autre.
+- Vous montrez l'application, puis le code d'une évolution de votre choix.
+- Vous pouvez être interrogé sur **n'importe quelle partie** du code.
+- En binôme, les **deux** parlent, et chacun doit pouvoir expliquer le code écrit par l'autre.
 - Vous dites ce qui **ne marche pas** ou ce que vous n'avez pas eu le temps de finir : c'est mieux vu qu'une démonstration qui évite le problème.
 
 Quelques questions que vous pouvez préparer :
@@ -66,7 +69,7 @@ Si vous avez travaillé avec Git (option A du [point de départ](README.md#-le-p
 
 1. Poussez votre branche sur votre fork.
 2. Sur GitHub, ouvrez une **pull request** de votre branche vers la branche `main` du dépôt [bvic-dev/kmp-from-zero](https://github.com/bvic-dev/kmp-from-zero).
-3. Donnez-lui pour titre `Projet – Dupont & Martin`, avec vos deux noms.
+3. Donnez-lui pour titre `Projet – Dupont`, ou `Projet – Dupont & Martin` en binôme.
 
 La pull request ne sera pas fusionnée : elle sert à rendre votre travail, et à le relire.
 
@@ -78,7 +81,7 @@ Sinon, envoyez le dossier du projet compressé. Supprimez d'abord les dossiers `
 
 Dans la description de la pull request, ou dans un fichier `RENDU.md` à la racine du zip :
 
-- les noms des deux membres du binôme ;
+- votre nom, ou les deux noms du binôme ;
 - la liste des évolutions réalisées, avec leur état : terminée, partielle ou abandonnée ;
 - ce qui ne fonctionne pas, si vous le savez.
 
