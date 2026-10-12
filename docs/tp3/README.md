@@ -73,7 +73,6 @@ Pour chaque évolution, posez-vous la même question avant de commencer : **quel
 ## 🤝 Si vous travaillez à deux
 
 - **Découpez** : une évolution qui touche la liste et une qui touche le détail peuvent avancer en parallèle. Deux évolutions qui modifient le même fichier, beaucoup moins.
-- **Chacun doit pouvoir expliquer tout le code**, y compris celui écrit par l'autre : c'est vérifié pendant la démonstration.
 
 Seul ou à deux, **commitez souvent**, une évolution à la fois. Un commit qui marche vaut mieux qu'une évolution à moitié finie le jour de la démonstration.
 

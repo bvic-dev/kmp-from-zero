@@ -51,7 +51,7 @@ Ce qui est attendu :
 
 - Vous me montrez l'application, puis le code d'une évolution de votre choix.
 - Je peux vous interroger sur **n'importe quelle partie** du code.
-- En binôme, les **deux** parlent, et chacun doit pouvoir expliquer le code écrit par l'autre.
+- En binôme, les **deux** parlent.
 - Vous dites ce qui **ne marche pas** ou ce que vous n'avez pas eu le temps de finir : c'est mieux vu qu'une démonstration qui évite le problème.
 
 Quelques questions que vous pouvez préparer :
