@@ -29,8 +29,8 @@ Au fil des séances, on construit ensemble **FollowMyCrypto** : une application 
 |---|---|---|
 | 1 | Découverte de KMP/CMP, les bases de Compose | [TP 1](docs/tp1/README.md) |
 | 2 | FollowMyCrypto : la liste des cryptos, de l'écran à l'API | [TP 2](docs/tp2/README.md) |
-| 3 | Navigation et écran de détail, puis projet en autonomie | *à venir* |
-| 4 | Projet en autonomie, et évaluation | *à venir* |
+| 3 | Fin du TP 2 ensemble, puis projet en binôme | [TP 3](docs/tp3/README.md) |
+| 4 | Projet en binôme, et présentations | [TP 3](docs/tp3/README.md) |
 
 ---
 
