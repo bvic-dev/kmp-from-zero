@@ -1,5 +1,6 @@
 package com.bvic.followmycrypto.ui.format
 
+import com.bvic.followmycrypto.model.Devise
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.roundToLong
@@ -17,13 +18,13 @@ fun formatNumber(value: Double, decimals: Int, grouping: Boolean = true): String
     return "$sign$integerPart,$decimalPart"
 }
 
-fun formatPrice(value: Double): String {
+fun formatPrice(value: Double, devise: Devise = Devise.USDT): String {
     val decimals = when {
         value >= 1.0 -> 2
         value >= 0.01 -> 4
         else -> 8
     }
-    return "${formatNumber(value, decimals)} $"
+    return "${formatNumber(value, decimals)} ${devise.symbol}"
 }
 
 fun formatPercent(value: Double): String {

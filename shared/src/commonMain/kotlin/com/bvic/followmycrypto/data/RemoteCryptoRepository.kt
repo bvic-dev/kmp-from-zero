@@ -3,41 +3,42 @@ package com.bvic.followmycrypto.data
 import com.bvic.followmycrypto.data.remote.BinanceApi
 import com.bvic.followmycrypto.data.remote.TickerDto
 import com.bvic.followmycrypto.model.Crypto
+import com.bvic.followmycrypto.model.Devise
 
-// Les cryptos suivies : la paire à demander à Binance, et le nom à afficher (Binance ne le fournit pas)
-private val cryptoNames = mapOf(
-    "BTCUSDT" to "Bitcoin",
-    "ETHUSDT" to "Ethereum",
-    "BNBUSDT" to "BNB",
-    "SOLUSDT" to "Solana",
-    "XRPUSDT" to "XRP",
-    "ADAUSDT" to "Cardano",
-    "DOGEUSDT" to "Dogecoin",
-    "SHIBUSDT" to "Shiba Inu",
+private val baseCryptoNames = mapOf(
+    "BTC" to "Bitcoin",
+    "ETH" to "Ethereum",
+    "BNB" to "BNB",
+    "SOL" to "Solana",
+    "XRP" to "XRP",
+    "ADA" to "Cardano",
+    "DOGE" to "Dogecoin",
+    "SHIB" to "Shiba Inu",
 )
 
 class RemoteCryptoRepository(private val api: BinanceApi) : CryptoRepository {
 
-    override suspend fun getCryptos(): List<Crypto> {
+    override suspend fun getCryptos(devise: Devise): List<Crypto> {
         // 1. Les paires à demander
-        val pairs = cryptoNames.keys.toList()
+        val pairs = baseCryptoNames.keys.map { "$it${devise.code}" }
         // 2. L'appel à l'API
         val tickers = api.getTickers(pairs)
         // 3. La conversion de chaque DTO en modèle
-        return tickers.map { ticker -> ticker.toCrypto() }
+        return tickers.map { ticker -> ticker.toCrypto(devise) }
     }
 
-    override suspend fun getCrypto(symbol: String): Crypto {
-        val tickers = api.getTickers(listOf(symbol + "USDT"))
-        return tickers.first().toCrypto()
+    override suspend fun getCrypto(symbol: String, devise: Devise): Crypto {
+        val pair = "$symbol${devise.code}"
+        val tickers = api.getTickers(listOf(pair))
+        return tickers.first().toCrypto(devise)
     }
 }
 
-// DTO (ce que l'API envoie) → modèle (ce dont l'application a besoin)
-private fun TickerDto.toCrypto(): Crypto {
+private fun TickerDto.toCrypto(devise: Devise): Crypto {
+    val baseSymbol = symbol.removeSuffix(devise.code)
     return Crypto(
-        symbol = symbol.removeSuffix("USDT"),
-        name = cryptoNames[symbol] ?: symbol,
+        symbol = baseSymbol,
+        name = baseCryptoNames[baseSymbol] ?: baseSymbol,
         price = lastPrice.toDouble(),
         changePercent = priceChangePercent.toDouble(),
         highPrice = highPrice.toDouble()
