@@ -5,4 +5,5 @@ data class Crypto(
     val name: String,
     val price: Double,
     val changePercent: Double,
+    val highPrice: Double
 )
