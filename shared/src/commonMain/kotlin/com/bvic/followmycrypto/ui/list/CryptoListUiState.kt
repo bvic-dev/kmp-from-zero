@@ -6,5 +6,8 @@ import com.bvic.followmycrypto.model.Crypto
 sealed interface CryptoListUiState {
     data object Loading : CryptoListUiState
     data class Error(val message: String) : CryptoListUiState
-    data class Success(val cryptos: List<Crypto>) : CryptoListUiState
+    data class Success(
+        val cryptos: List<Crypto>,
+        val selectedSort: CryptoSort = CryptoSort.NAME_ASC,
+    ) : CryptoListUiState
 }
