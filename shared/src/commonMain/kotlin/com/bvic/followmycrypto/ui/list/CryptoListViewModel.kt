@@ -33,6 +33,13 @@ class CryptoListViewModel(
 
     fun refresh() = load()
 
+    fun addCrypto(symbol: String, name: String) {
+        if (symbol.isNotBlank() && name.isNotBlank()) {
+            repository.addCrypto(symbol, name)
+            load()
+        }
+    }
+
     fun onSortSelected(sort: CryptoSort) {
         _selectedSort.value = sort
         val current = _uiState.value

@@ -37,6 +37,7 @@ fun CryptoListScreen(
         onRefresh = viewModel::refresh,
         onSortSelected = viewModel::onSortSelected,
         onDeviseSelected = viewModel::onDeviseSelected,
+        onAddCrypto = viewModel::addCrypto,
         onCryptoClick = onCryptoClick,
         modifier = modifier,
     )
@@ -51,6 +52,7 @@ fun CryptoListContent(
     modifier: Modifier = Modifier,
     onSortSelected: (CryptoSort) -> Unit = {},
     onDeviseSelected: (Devise) -> Unit = {},
+    onAddCrypto: (symbol: String, name: String) -> Unit = { _, _ -> },
 ) {
     Scaffold(
         modifier = modifier,
@@ -79,6 +81,7 @@ fun CryptoListContent(
                 selectedDevise = uiState.selectedDevise,
                 onSortSelected = onSortSelected,
                 onDeviseSelected = onDeviseSelected,
+                onAddCrypto = onAddCrypto,
                 onCryptoClick = onCryptoClick,
                 modifier = contentModifier,
             )
@@ -93,9 +96,12 @@ fun CryptoList(
     selectedDevise: Devise,
     onSortSelected: (CryptoSort) -> Unit,
     onDeviseSelected: (Devise) -> Unit,
+    onAddCrypto: (symbol: String, name: String) -> Unit,
     onCryptoClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    var showAddDialog by remember { mutableStateOf(false) }
+
     Column(modifier = modifier.fillMaxSize()) {
         DeviseChips(
             selectedDevise = selectedDevise,
@@ -118,8 +124,79 @@ fun CryptoList(
                 )
                 HorizontalDivider()
             }
+
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    OutlinedButton(
+                        onClick = { showAddDialog = true },
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Icon(Icons.Filled.Add, contentDescription = null)
+                        Text("Ajouter une crypto")
+                    }
+                }
+            }
         }
     }
+
+    if (showAddDialog) {
+        AddCryptoDialog(
+            onDismiss = { showAddDialog = false },
+            onConfirm = { name, symbol ->
+                onAddCrypto(symbol, name)
+                showAddDialog = false
+            },
+        )
+    }
+}
+
+@Composable
+fun AddCryptoDialog(
+    onDismiss: () -> Unit,
+    onConfirm: (name: String, symbol: String) -> Unit,
+) {
+    var name by remember { mutableStateOf("") }
+    var symbol by remember { mutableStateOf("") }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Ajouter une nouvelle crypto") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text("Nom (ex: Bitcoin)") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = symbol,
+                    onValueChange = { symbol = it },
+                    label = { Text("Symbole (ex: BTC)") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = { onConfirm(name.trim(), symbol.trim()) },
+            ) {
+                Text("Ajouter")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Annuler")
+            }
+        },
+    )
 }
 
 @Composable
@@ -127,7 +204,7 @@ fun DeviseChips(
     selectedDevise: Devise,
     onDeviseSelected: (Devise) -> Unit,
     modifier: Modifier = Modifier,
-){
+) {
     LazyRow(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp),

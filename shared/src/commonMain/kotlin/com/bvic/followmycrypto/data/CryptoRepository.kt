@@ -7,4 +7,6 @@ interface CryptoRepository {
     suspend fun getCryptos(devise: Devise = Devise.USDT): List<Crypto>
 
     suspend fun getCrypto(symbol: String, devise: Devise = Devise.USDT): Crypto
+
+    fun addCrypto(symbol: String, name: String)
 }

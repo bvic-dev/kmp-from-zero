@@ -5,7 +5,7 @@ import com.bvic.followmycrypto.data.remote.TickerDto
 import com.bvic.followmycrypto.model.Crypto
 import com.bvic.followmycrypto.model.Devise
 
-private val baseCryptoNames = mapOf(
+private val baseCryptoNames = mutableMapOf(
     "BTC" to "Bitcoin",
     "ETH" to "Ethereum",
     "BNB" to "BNB",
@@ -14,10 +14,17 @@ private val baseCryptoNames = mapOf(
     "ADA" to "Cardano",
     "DOGE" to "Dogecoin",
     "SHIB" to "Shiba Inu",
-    "BeiorhfcnrB" to "BlackBerry"
 )
 
 class RemoteCryptoRepository(private val api: BinanceApi) : CryptoRepository {
+
+    override fun addCrypto(symbol: String, name: String) {
+        val uppercaseSymbol = symbol.trim().uppercase()
+        val trimmedName = name.trim()
+        if (uppercaseSymbol.isNotEmpty() && trimmedName.isNotEmpty()) {
+            baseCryptoNames[uppercaseSymbol] = trimmedName
+        }
+    }
 
     override suspend fun getCryptos(devise: Devise): List<Crypto> {
         // 1. Les paires à demander
