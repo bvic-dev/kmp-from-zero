@@ -1,19 +1,23 @@
 package com.bvic.followmycrypto.ui.list
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil3.compose.SubcomposeAsyncImage
 import com.bvic.followmycrypto.data.AppContainer
 import com.bvic.followmycrypto.model.*
 import com.bvic.followmycrypto.theme.FollowMyCryptoTheme
@@ -372,6 +376,39 @@ fun SortChips(
 }
 
 @Composable
+fun CryptoIcon(
+    symbol: String,
+    modifier: Modifier = Modifier,
+) {
+    val logoUrl = "https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/${symbol.lowercase()}.png"
+    val placeholder = @Composable {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.primaryContainer, CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = symbol.take(3).uppercase(),
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+            )
+        }
+    }
+
+    SubcomposeAsyncImage(
+        model = logoUrl,
+        contentDescription = null,
+        loading = { placeholder() },
+        error = { placeholder() },
+        modifier = modifier
+            .size(40.dp)
+            .clip(CircleShape),
+    )
+}
+
+@Composable
 fun CryptoRow(
     crypto: Crypto,
     onClick: () -> Unit,
@@ -385,6 +422,10 @@ fun CryptoRow(
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        CryptoIcon(
+            symbol = crypto.symbol,
+            modifier = Modifier.padding(end = 12.dp),
+        )
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = crypto.name,
