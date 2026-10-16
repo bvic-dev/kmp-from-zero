@@ -4,9 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bvic.followmycrypto.data.CryptoRepository
 import com.bvic.followmycrypto.model.*
+import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class CryptoListViewModel(
@@ -29,9 +33,30 @@ class CryptoListViewModel(
 
     init {
         load()
+        startAutoRefresh()
     }
 
     fun refresh() = load()
+
+    fun startAutoRefresh() {
+        viewModelScope.launch {
+            while (isActive) {
+                delay(10.seconds)
+                try {
+                    val fetched = repository.getCryptos(_selectedDevise.value)
+                    rawCryptos = fetched
+                    val currentSort = _selectedSort.value
+                    _uiState.value = CryptoListUiState.Success(
+                        cryptos = currentSort.sort(fetched),
+                        selectedSort = currentSort,
+                        selectedDevise = _selectedDevise.value,
+                    )
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {}
+            }
+        }
+    }
 
     fun addCrypto(symbol: String, name: String) {
         if (symbol.isNotBlank() && name.isNotBlank()) {
