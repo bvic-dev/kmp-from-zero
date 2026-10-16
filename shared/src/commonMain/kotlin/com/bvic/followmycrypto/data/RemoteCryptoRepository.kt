@@ -3,6 +3,9 @@ package com.bvic.followmycrypto.data
 import com.bvic.followmycrypto.data.remote.BinanceApi
 import com.bvic.followmycrypto.data.remote.TickerDto
 import com.bvic.followmycrypto.model.Crypto
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.withContext
 
 // Les cryptos suivies : la paire à demander à Binance, et le nom à afficher (Binance ne le fournit pas)
 private val cryptoNames = mapOf(
@@ -18,18 +21,18 @@ private val cryptoNames = mapOf(
 
 class RemoteCryptoRepository(private val api: BinanceApi) : CryptoRepository {
 
-    override suspend fun getCryptos(): List<Crypto> {
+    override suspend fun getCryptos(): List<Crypto> = withContext(Dispatchers.IO) {
         // 1. Les paires à demander
         val pairs = cryptoNames.keys.toList()
         // 2. L'appel à l'API
         val tickers = api.getTickers(pairs)
         // 3. La conversion de chaque DTO en modèle
-        return tickers.map { ticker -> ticker.toCrypto() }
+        tickers.map { ticker -> ticker.toCrypto() }
     }
 
-    override suspend fun getCrypto(symbol: String): Crypto {
+    override suspend fun getCrypto(symbol: String): Crypto = withContext(Dispatchers.IO) {
         val tickers = api.getTickers(listOf(symbol + "USDT"))
-        return tickers.first().toCrypto()
+        tickers.first().toCrypto()
     }
 }
 
@@ -39,6 +42,8 @@ private fun TickerDto.toCrypto(): Crypto {
         symbol = symbol.removeSuffix("USDT"),
         name = cryptoNames[symbol] ?: symbol,
         price = lastPrice.toDouble(),
+        highPrice = highPrice.toDouble(),
+        lowPrice = lowPrice.toDouble(),
         changePercent = priceChangePercent.toDouble(),
     )
 }

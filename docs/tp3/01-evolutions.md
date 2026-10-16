@@ -6,28 +6,28 @@ Les captures d'écran sont données **à titre indicatif** : elles montrent une 
 
 Le nombre d'étoiles indique la difficulté. Vous choisissez librement, avec une seule règle : **au moins une** de vos évolutions doit porter le symbole 🧱. Ce sont celles qui font voyager une donnée de la couche données jusqu'à l'interface.
 
-| Évolution | Difficulté | Couches | |
-|---|---|---|---|
-| [1. Le plus haut et le plus bas sur 24h](#1-le-plus-haut-et-le-plus-bas-sur-24h) | ⭐ | API, repository, modèle, interface | 🧱 |
-| [2. Trier la liste](#2-trier-la-liste) | ⭐ | ViewModel, interface |  |
-| [3. Rechercher une crypto](#3-rechercher-une-crypto) | ⭐ | ViewModel, interface |  |
-| [4. Suivre d'autres cryptos](#4-suivre-dautres-cryptos) | ⭐ | Repository |  |
-| [5. Choisir le thème clair ou sombre](#5-choisir-le-thème-clair-ou-sombre) | ⭐ | Interface |  |
-| [6. Créer votre propre thème](#6-créer-votre-propre-thème) | ⭐ | Interface (thème) |  |
-| [7. Afficher les logos](#7-afficher-les-logos) | ⭐⭐ | Bibliothèques, modèle, interface |  |
-| [8. Un squelette de chargement](#8-un-squelette-de-chargement) | ⭐⭐ | Interface |  |
-| [9. Faire clignoter le prix qui change](#9-faire-clignoter-le-prix-qui-change) | ⭐⭐ | Interface |  |
-| [10. Rafraîchir en tirant la liste](#10-rafraîchir-en-tirant-la-liste) | ⭐⭐ | ViewModel, état, interface |  |
-| [11. Rafraîchir automatiquement](#11-rafraîchir-automatiquement) | ⭐⭐ | ViewModel |  |
-| [12. Les favoris](#12-les-favoris) | ⭐⭐ | Repository, ViewModel, état, interface | 🧱 |
-| [13. Un convertisseur](#13-un-convertisseur) | ⭐⭐ | ViewModel, état, interface |  |
-| [14. Changer de devise](#14-changer-de-devise) | ⭐⭐ | API, repository, ViewModel, interface | 🧱 |
-| [15. Des messages d'erreur précis](#15-des-messages-derreur-précis) | ⭐⭐ | API, repository, ViewModel, état, interface | 🧱 |
-| [16. Garder les favoris après fermeture](#16-garder-les-favoris-après-fermeture) | ⭐⭐⭐ | Bibliothèques, repository |  |
-| [17. Le graphique du prix](#17-le-graphique-du-prix) | ⭐⭐⭐ | API, repository, modèle, ViewModel, interface | 🧱 |
-| [18. Tester le ViewModel](#18-tester-le-viewmodel) | ⭐⭐⭐ | Tests, bibliothèques |  |
-| [19. Tester l'interface](#19-tester-linterface) | ⭐⭐⭐ | Tests, bibliothèques |  |
-| [20. Votre idée](#20-votre-idée) | libre | – |  |
+| Évolution | Difficulté | Couches | | Choisis |
+|---|---|---|---|---|
+| [1. Le plus haut et le plus bas sur 24h](#1-le-plus-haut-et-le-plus-bas-sur-24h) | ⭐ | API, repository, modèle, interface | 🧱 | ✅ |
+| [2. Trier la liste](#2-trier-la-liste) | ⭐ | ViewModel, interface |  | ✅ |
+| [3. Rechercher une crypto](#3-rechercher-une-crypto) | ⭐ | ViewModel, interface |  | ✅ |
+| [4. Suivre d'autres cryptos](#4-suivre-dautres-cryptos) | ⭐ | Repository |  |  |
+| [5. Choisir le thème clair ou sombre](#5-choisir-le-thème-clair-ou-sombre) | ⭐ | Interface |  |  |
+| [6. Créer votre propre thème](#6-créer-votre-propre-thème) | ⭐ | Interface (thème) |  |  |
+| [7. Afficher les logos](#7-afficher-les-logos) | ⭐⭐ | Bibliothèques, modèle, interface |  | ✅ |
+| [8. Un squelette de chargement](#8-un-squelette-de-chargement) | ⭐⭐ | Interface |  |  |
+| [9. Faire clignoter le prix qui change](#9-faire-clignoter-le-prix-qui-change) | ⭐⭐ | Interface |  |  |
+| [10. Rafraîchir en tirant la liste](#10-rafraîchir-en-tirant-la-liste) | ⭐⭐ | ViewModel, état, interface |  |  |
+| [11. Rafraîchir automatiquement](#11-rafraîchir-automatiquement) | ⭐⭐ | ViewModel |  |  |
+| [12. Les favoris](#12-les-favoris) | ⭐⭐ | Repository, ViewModel, état, interface | 🧱 |  |
+| [13. Un convertisseur](#13-un-convertisseur) | ⭐⭐ | ViewModel, état, interface |  |  |
+| [14. Changer de devise](#14-changer-de-devise) | ⭐⭐ | API, repository, ViewModel, interface | 🧱 |  |
+| [15. Des messages d'erreur précis](#15-des-messages-derreur-précis) | ⭐⭐ | API, repository, ViewModel, état, interface | 🧱 |  |
+| [16. Garder les favoris après fermeture](#16-garder-les-favoris-après-fermeture) | ⭐⭐⭐ | Bibliothèques, repository |  |  |
+| [17. Le graphique du prix](#17-le-graphique-du-prix) | ⭐⭐⭐ | API, repository, modèle, ViewModel, interface | 🧱 |  |
+| [18. Tester le ViewModel](#18-tester-le-viewmodel) | ⭐⭐⭐ | Tests, bibliothèques |  |  |
+| [19. Tester l'interface](#19-tester-linterface) | ⭐⭐⭐ | Tests, bibliothèques |  |  |
+| [20. Votre idée](#20-votre-idée) | libre | – |  |  |
 
 > [!TIP]
 > Commencez par une ⭐ : mieux vaut trois évolutions terminées qu'une ⭐⭐⭐ qui ne fonctionne pas.

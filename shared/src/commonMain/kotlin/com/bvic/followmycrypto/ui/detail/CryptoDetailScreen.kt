@@ -2,8 +2,10 @@ package com.bvic.followmycrypto.ui.detail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -26,6 +28,7 @@ import com.bvic.followmycrypto.model.Crypto
 import com.bvic.followmycrypto.theme.FollowMyCryptoTheme
 import com.bvic.followmycrypto.theme.PriceDown
 import com.bvic.followmycrypto.theme.PriceUp
+import com.bvic.followmycrypto.ui.components.CryptoLogo
 import com.bvic.followmycrypto.ui.components.ErrorContent
 import com.bvic.followmycrypto.ui.components.LoadingContent
 import com.bvic.followmycrypto.ui.format.formatPercent
@@ -85,11 +88,13 @@ fun CryptoDetailContent(
 
 @Composable
 fun CryptoDetail(crypto: Crypto, modifier: Modifier = Modifier) {
+
     Column(
         modifier = modifier.padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        CryptoLogo(crypto = crypto, modifier = Modifier.size(64.dp))
         Text(
             text = crypto.name,
             style = MaterialTheme.typography.titleLarge,
@@ -105,6 +110,40 @@ fun CryptoDetail(crypto: Crypto, modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.titleMedium,
             color = if (crypto.changePercent >= 0) PriceUp else PriceDown,
         )
+        Row(
+
+        ) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+            ) {
+                Text(
+                    text = "Plus haut 24h",
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Text(
+                    text = "Plus bas 24h",
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Column {
+                Text(
+                    text = formatPrice(crypto.highPrice),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = formatPrice(crypto.lowPrice),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+
+
+        }
     }
 }
 
@@ -115,7 +154,7 @@ fun CryptoDetailContentPreview() {
         CryptoDetailContent(
             symbol = "BTC",
             uiState = CryptoDetailUiState.Success(
-                Crypto(symbol = "BTC", name = "Bitcoin", price = 85613.50, changePercent = 0.88),
+                Crypto(symbol = "BTC", name = "Bitcoin", price = 85613.50, changePercent = 0.88, lowPrice = 84200.0, highPrice = 86500.0),
             ),
             onBack = {},
             onRetry = {},
