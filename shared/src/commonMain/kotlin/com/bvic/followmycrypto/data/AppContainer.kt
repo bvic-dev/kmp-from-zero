@@ -21,4 +21,7 @@ object AppContainer {
 
     // Pour travailler sans réseau, remplace cette ligne par FakeCryptoRepository()
     val cryptoRepository: CryptoRepository by lazy { RemoteCryptoRepository(BinanceApi(httpClient)) }
+
+    // Évolution 12 : les favoris, partagés par la liste et le détail
+    val favoritesRepository: FavoritesRepository by lazy { InMemoryFavoritesRepository() }
 }
