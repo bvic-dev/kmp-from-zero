@@ -4,8 +4,12 @@ import com.bvic.followmycrypto.data.remote.BinanceApi
 import com.bvic.followmycrypto.data.remote.TickerDto
 import com.bvic.followmycrypto.model.Crypto
 import com.bvic.followmycrypto.model.Devise
+import com.russhwolf.settings.Settings
+import kotlinx.serialization.json.Json
 
-private val baseCryptoNames = mutableMapOf(
+private const val SETTINGS_KEY = "base_crypto_names"
+
+private val defaultCryptoNames = mapOf(
     "BTC" to "Bitcoin",
     "ETH" to "Ethereum",
     "BNB" to "BNB",
@@ -16,13 +20,45 @@ private val baseCryptoNames = mutableMapOf(
     "SHIB" to "Shiba Inu",
 )
 
-class RemoteCryptoRepository(private val api: BinanceApi) : CryptoRepository {
+class RemoteCryptoRepository(
+    private val api: BinanceApi,
+    private val settings: Settings = Settings(),
+) : CryptoRepository {
+
+    private val baseCryptoNames: MutableMap<String, String> = loadCryptoNames().toMutableMap()
+
+    private fun loadCryptoNames(): Map<String, String> {
+        val savedJson = settings.getStringOrNull(SETTINGS_KEY)
+        if (savedJson.isNullOrBlank()) {
+            saveCryptoNames(defaultCryptoNames)
+            return defaultCryptoNames
+        }
+        return try {
+            Json.decodeFromString<Map<String, String>>(savedJson)
+        } catch (e: Exception) {
+            defaultCryptoNames
+        }
+    }
+
+    private fun saveCryptoNames(names: Map<String, String>) {
+        val json = Json.encodeToString(names)
+        settings.putString(SETTINGS_KEY, json)
+    }
 
     override fun addCrypto(symbol: String, name: String) {
         val uppercaseSymbol = symbol.trim().uppercase()
         val trimmedName = name.trim()
         if (uppercaseSymbol.isNotEmpty() && trimmedName.isNotEmpty()) {
             baseCryptoNames[uppercaseSymbol] = trimmedName
+            saveCryptoNames(baseCryptoNames)
+        }
+    }
+
+    override fun removeCrypto(symbol: String) {
+        val uppercaseSymbol = symbol.trim().uppercase()
+        if (uppercaseSymbol.isNotEmpty()) {
+            baseCryptoNames.remove(uppercaseSymbol)
+            saveCryptoNames(baseCryptoNames)
         }
     }
 
@@ -67,15 +103,15 @@ class RemoteCryptoRepository(private val api: BinanceApi) : CryptoRepository {
             )
         }
     }
-}
 
-private fun TickerDto.toCrypto(devise: Devise): Crypto {
-    val baseSymbol = symbol.removeSuffix(devise.code)
-    return Crypto(
-        symbol = baseSymbol,
-        name = baseCryptoNames[baseSymbol] ?: baseSymbol,
-        price = lastPrice.toDouble(),
-        changePercent = priceChangePercent.toDouble(),
-        highPrice = highPrice.toDouble()
-    )
+    private fun TickerDto.toCrypto(devise: Devise): Crypto {
+        val baseSymbol = symbol.removeSuffix(devise.code)
+        return Crypto(
+            symbol = baseSymbol,
+            name = baseCryptoNames[baseSymbol] ?: baseSymbol,
+            price = lastPrice.toDouble(),
+            changePercent = priceChangePercent.toDouble(),
+            highPrice = highPrice.toDouble()
+        )
+    }
 }

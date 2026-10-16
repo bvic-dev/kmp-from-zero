@@ -9,4 +9,6 @@ interface CryptoRepository {
     suspend fun getCrypto(symbol: String, devise: Devise = Devise.USDT): Crypto
 
     fun addCrypto(symbol: String, name: String)
+
+    fun removeCrypto(symbol: String)
 }

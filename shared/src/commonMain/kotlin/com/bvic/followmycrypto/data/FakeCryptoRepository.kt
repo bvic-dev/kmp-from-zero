@@ -25,6 +25,13 @@ class FakeCryptoRepository : CryptoRepository {
         }
     }
 
+    override fun removeCrypto(symbol: String) {
+        val uppercaseSymbol = symbol.trim().uppercase()
+        if (uppercaseSymbol.isNotEmpty()) {
+            mockCryptos.remove(mockCryptos.first { it.symbol == uppercaseSymbol })
+        }
+    }
+
     override suspend fun getCryptos(devise: Devise): List<Crypto> {
         delay(1_500)
         return mockCryptos

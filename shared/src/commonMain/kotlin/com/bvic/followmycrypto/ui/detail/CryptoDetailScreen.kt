@@ -1,18 +1,10 @@
 package com.bvic.followmycrypto.ui.detail
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -46,6 +38,7 @@ fun CryptoDetailScreen(
         uiState = uiState,
         onBack = onBack,
         onRetry = viewModel::retry,
+        onDelete = { viewModel.deleteCrypto(onBack) },
         modifier = modifier,
     )
 }
@@ -57,6 +50,7 @@ fun CryptoDetailContent(
     onBack: () -> Unit,
     onRetry: () -> Unit,
     modifier: Modifier = Modifier,
+    onDelete: () -> Unit = {},
 ) {
     Scaffold(
         modifier = modifier,
@@ -79,16 +73,24 @@ fun CryptoDetailContent(
                 onRetry = onRetry,
                 modifier = contentModifier,
             )
-            is CryptoDetailUiState.Success -> CryptoDetail(crypto = uiState.crypto, modifier = contentModifier)
+            is CryptoDetailUiState.Success -> CryptoDetail(
+                crypto = uiState.crypto,
+                onDelete = onDelete,
+                modifier = contentModifier,
+            )
         }
     }
 }
 
 @Composable
-fun CryptoDetail(crypto: Crypto, modifier: Modifier = Modifier) {
+fun CryptoDetail(
+    crypto: Crypto,
+    modifier: Modifier = Modifier,
+    onDelete: () -> Unit = {},
+) {
     Column(
         modifier = modifier.padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
@@ -106,7 +108,7 @@ fun CryptoDetail(crypto: Crypto, modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.titleMedium,
             color = if (crypto.changePercent >= 0) PriceUp else PriceDown,
         )
-        Row() {
+        Row {
             Text(
                 text = formatPrice(crypto.highPrice),
                 style = MaterialTheme.typography.titleLarge,
@@ -117,6 +119,19 @@ fun CryptoDetail(crypto: Crypto, modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        OutlinedButton(
+            onClick = onDelete,
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = MaterialTheme.colorScheme.error,
+            ),
+        ) {
+            Icon(Icons.Filled.Delete, contentDescription = "Supprimer")
+            Spacer(modifier = Modifier.width(8.dp))
+            Text("Supprimer la crypto")
         }
     }
 }
@@ -132,6 +147,7 @@ fun CryptoDetailContentPreview() {
             ),
             onBack = {},
             onRetry = {},
+            onDelete = {},
         )
     }
 }
