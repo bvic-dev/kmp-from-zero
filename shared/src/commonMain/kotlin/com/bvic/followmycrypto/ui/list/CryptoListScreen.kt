@@ -47,6 +47,7 @@ fun CryptoListScreen(
     )
 }
 
+
 // Version sans état : elle ne connaît pas le ViewModel, on peut donc l'afficher dans un aperçu
 @Composable
 fun CryptoListContent(
