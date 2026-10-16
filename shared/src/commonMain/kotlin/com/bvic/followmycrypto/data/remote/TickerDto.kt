@@ -7,5 +7,7 @@ import kotlinx.serialization.Serializable
 data class TickerDto(
     val symbol: String,
     val lastPrice: String,
+    val highPrice: String,
+    val lowPrice: String,
     val priceChangePercent: String,
 )
