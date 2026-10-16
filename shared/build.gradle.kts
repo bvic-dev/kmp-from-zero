@@ -68,6 +68,9 @@ kotlin {
             implementation(libs.ktor.client.contentNegotiation)
             implementation(libs.ktor.serialization.kotlinxJson)
             implementation(libs.kotlinx.serializationJson)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor3)
+            implementation(libs.multiplatformSettings.noArg)
             implementation(libs.navigation.compose)
         }
         commonTest.dependencies {

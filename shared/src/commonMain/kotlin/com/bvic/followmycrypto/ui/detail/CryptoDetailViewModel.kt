@@ -22,6 +22,11 @@ class CryptoDetailViewModel(
 
     fun retry() = load()
 
+    fun deleteCrypto(onDeleted: () -> Unit) {
+        repository.removeCrypto(symbol)
+        onDeleted()
+    }
+
     private fun load() {
         _uiState.value = CryptoDetailUiState.Loading
         viewModelScope.launch {

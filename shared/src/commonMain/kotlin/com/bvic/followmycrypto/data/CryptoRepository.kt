@@ -1,10 +1,14 @@
 package com.bvic.followmycrypto.data
 
-import com.bvic.followmycrypto.model.Crypto
+import com.bvic.followmycrypto.model.*
 
 // Le contrat : « je sais fournir la liste des cryptos ». D'où elles viennent ne regarde que l'implémentation.
 interface CryptoRepository {
-    suspend fun getCryptos(): List<Crypto>
+    suspend fun getCryptos(devise: Devise = Devise.USDT): List<Crypto>
 
-    suspend fun getCrypto(symbol: String): Crypto
+    suspend fun getCrypto(symbol: String, devise: Devise = Devise.USDT): Crypto
+
+    fun addCrypto(symbol: String, name: String)
+
+    fun removeCrypto(symbol: String)
 }
